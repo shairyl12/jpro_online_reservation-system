@@ -5,7 +5,18 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 const app = express();
-app.use(cors());
+
+// =============================================================================
+// 🔒 CORS CONFIGURATION - ALLOWS YOUR LIVE SITE AND LOCALHOST TO CONNECT
+// =============================================================================
+app.use(cors({
+    origin: [
+        'http://localhost:5173',
+        'https://jpro-online-reservation-system.onrender.com'
+    ],
+    credentials: true
+}));
+
 app.use(express.json());
 
 // Set up connection pool using variables configured on Render
